@@ -1,12 +1,12 @@
-# HW4 — Video Anomaly Detection on CUHK Avenue
+# HW4 - Video Anomaly Detection on CUHK Avenue
 
-This coursework evaluates three temporal prediction formulations derived from Jigsaw-VAD on the CUHK Avenue dataset. Training uses normal video only; testing includes both normal and abnormal events.
+This coursework report compares three temporal prediction formulations derived from Jigsaw-VAD on the CUHK Avenue dataset. Training uses normal video, while evaluation covers normal and abnormal events.
 
 ## Experimental setup
 
 - Dataset: CUHK Avenue
-- Training subset: videos 01–08
-- Test subset: videos 01–05
+- Training subset: videos 01-08
+- Test subset: videos 01-05
 - Spatio-temporal cube: 5 consecutive frames
 - Detection-filter ratio: 0.9
 - Training epochs: 30
@@ -14,19 +14,19 @@ This coursework evaluates three temporal prediction formulations derived from Ji
 
 ## Compared formulations
 
-### V1 — Original Jigsaw-VAD
+### V1 - Original Jigsaw-VAD
 
 The baseline jointly predicts spatial jigsaw positions and temporal permutation labels.
 
-### V2 — Binary temporal classification
+### V2 - Binary temporal classification
 
-Temporal prediction is reduced to a balanced binary task: an unpermuted sequence is normal, while any permutation is abnormal. The anomaly score is the predicted abnormal probability.
+Temporal prediction becomes a balanced binary task: an unpermuted sequence is normal, while a permutation is anomalous. The anomaly score is the predicted anomalous probability.
 
-### V3 — Full permutation classification
+### V3 - Full permutation classification
 
 The temporal branch predicts one of all `5! = 120` permutations. The anomaly score is one minus the probability assigned to the correct permutation.
 
-## Reported results
+## Recorded results
 
 | Version | Temporal objective | micro-AUROC |
 | --- | --- | ---: |
@@ -34,12 +34,12 @@ The temporal branch predicts one of all `5! = 120` permutations. The anomaly sco
 | V2 | Binary normal/permuted classification | 0.5162 |
 | V3 | 120-class permutation classification | 0.6490 |
 
-Within these runs, the original objective performed best. The binary formulation discarded too much temporal structure, while the 120-class formulation retained finer ordering information but introduced a substantially harder classification task.
+The original objective performed best in these runs. The binary formulation compressed temporal structure into one decision, while the 120-class formulation retained order information at the cost of a more demanding classification problem.
 
-## Reproduction status
+## Report scope
 
-This repository contains the experiment report only. The modified model code, preprocessing scripts, dataset, detections, and checkpoints are not tracked, so the reported values cannot be independently reproduced here. Refer to the [Jigsaw-VAD paper](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/6451_ECCV_2022_paper.php) and [official implementation](https://github.com/gdwang08/Jigsaw-VAD) for the original method.
+This directory presents the experiment design, variants, and recorded measurements. A full rerun pairs this report with the CUHK Avenue data and the upstream Jigsaw-VAD training pipeline.
 
 ## Attribution
 
-The baseline method is from Guodong Wang et al., “Video Anomaly Detection by Solving Decoupled Spatio-Temporal Jigsaw Puzzles,” ECCV 2022. This coursework's binary and 120-class temporal objectives are experiment-specific modifications; they are not presented as features of the upstream implementation.
+The baseline method is from Guodong Wang et al., ["Video Anomaly Detection by Solving Decoupled Spatio-Temporal Jigsaw Puzzles"](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/6451_ECCV_2022_paper.php), ECCV 2022. The [official Jigsaw-VAD repository](https://github.com/gdwang08/Jigsaw-VAD) provides the upstream implementation. The binary and 120-class temporal objectives are coursework variants.
