@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 ########################################################
 ########  Do not modify the sample code segment ########
 ########################################################
@@ -61,7 +62,10 @@ if __name__=='__main__':
     # category = "ECG200" # Wafer / ECG200
     print(f"Dataset: {category}")
 
-    data_root = Path(os.environ.get("AD_HW2_DATA_ROOT", Path(__file__).resolve().parent / "data"))
+    data_root = Path(os.environ.get(
+        "AD_HW2_DATA_ROOT",
+        Path(__file__).resolve().parent / "Homework2_Time_Series_Anomaly_Detection" / "data",
+    ))
     train_data = pd.read_csv(data_root / category / f'{category}_TRAIN.tsv', sep='\t', header=None).to_numpy()
     test_data = pd.read_csv(data_root / category / f'{category}_TEST.tsv', sep='\t', header=None).to_numpy()
 
