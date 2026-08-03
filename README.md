@@ -1,64 +1,46 @@
-# Machine Learning for Anomaly Detection (2024 Spring)
+# Machine Learning for Anomaly Detection - Spring 2024
 
-This repository contains all homework and the final project for the "Machine Learning for Anomaly Detection" course taught by **Prof. Shang-Hong Lai** at NTHU.
+Coursework from NTHU CS5658, taught by Prof. Shang-Hong Lai. The four assignments move from classical anomaly scores on images and time series to deep industrial and video anomaly detection.
 
-## 📚 Course Overview
-This course introduces machine learning methods for detecting anomalies in images, time series, industrial data, and videos. 
+## Projects
 
----
+| Assignment | Setting | Main methods | Recorded outcome |
+| --- | --- | --- | --- |
+| [HW1: MNIST Anomaly Detection](Homework1_MNIST_Anomaly_Detection/) | One digit is normal; the other digits are anomalies | k-NN, k-means, cosine and Minkowski distance, Mahalanobis distance, LOF | Best average ROC-AUC: 0.9792 |
+| [HW2: Time-Series Anomaly Detection](Homework2_Time_Series_Anomaly_Detection/) | Wafer and ECG200 sequences | k-NN, PCA reconstruction, DFT, Haar DWT | Best ROC-AUC: 0.9987 on Wafer and 0.9661 on ECG200 |
+| [HW3: Industrial Anomaly Detection](Homework3_Industrial_Anomaly_Detection/) | MVTec AD `leather` and `metal_nut` | SimpleNet, feature adaptation, synthetic anomalies, image and pixel scoring | Executed notebook with qualitative results and ablations |
+| [HW4: Video Anomaly Detection](Homework4_Video_Anomaly_Detection/) | CUHK Avenue video | Jigsaw-VAD and two temporal objectives | Best micro-AUROC: 0.7944 |
 
-## 📦 Assignments
+## Repository layout
 
-### HW1 - MNIST Anomaly Detection
-Apply various anomaly detection methods on the MNIST dataset by:
-- Using one digit as the normal class, others as anomalies.
-- Applying PCA for dimensionality reduction (to 30).
-- Training only on normal data.
-- Evaluating with ROC-AUC over all digit classes.
+```text
+.
+|-- Homework1_MNIST_Anomaly_Detection/
+|   |-- images/lof_tsne.png
+|   |-- main.py
+|   `-- README.md
+|-- Homework2_Time_Series_Anomaly_Detection/
+|   |-- images/
+|   |-- main.py
+|   `-- README.md
+|-- Homework3_Industrial_Anomaly_Detection/
+|   |-- AD_HW3.ipynb
+|   `-- README.md
+|-- Homework4_Video_Anomaly_Detection/
+|   `-- README.md
+`-- requirements.txt
+```
 
-👉 Folder: [`Homework1_MNIST_Anomaly_Detection/`](./Homework1_MNIST_Anomaly_Detection)
+## Environment
 
----
+Create a Python environment and install the shared dependencies:
 
-### HW2 - Time Series Anomaly Detection
-Detect anomalies in:
-- **Wafer** and **ECG200** datasets.
-- Use normal samples (label=1) for training, 9:1 ratio for testing.
-- Feature extraction & anomaly algorithms applied.
-- ROC-AUC used for evaluation.
+```bash
+python -m pip install -r requirements.txt
+```
 
-👉 Folder: [`Homework2_Time_Series_Anomaly_Detection/`](./Homework2_Time_Series_Anomaly_Detection)
+Each assignment README describes its dataset layout, execution path, evaluation protocol, and interpretation notes. Datasets are acquired from their official sources and retain their original terms.
 
----
+## Attribution
 
-### HW3 - Industrial Anomaly Detection
-Use **MVTecAD** datasets:
-- Classes: `metal_nut` and `leather`
-- Model: Self-implemented `SimpleNet` (CVPR 2023)
-- Tasks: Anomaly detection + segmentation
-
-References:
-- [SimpleNet Paper (CVPR 2023)](https://openaccess.thecvf.com/content/CVPR2023/papers/Liu_SimpleNet_A_Simple_Network_for_Image_Anomaly_Detection_and_Localization_CVPR_2023_paper.pdf)
-- [GitHub Repo](https://github.com/DonaldRR/SimpleNet)
-
-👉 Folder: [`Homework3_Industrial_Anomaly_Detection/`](./Homework3_Industrial_Anomaly_Detection)
-
----
-
-### HW4 - Video Anomaly Detection
-Dataset: **CUHK Avenue**
-- Training videos: Normal only
-- Testing videos: Normal + Abnormal events
-- Spatio-temporal cubes (5 frames)
-- Epoch = 20, Filter ratio = 0.9
-
-👉 Folder: [`Homework4_Video_Anomaly_Detection/`](./Homework4_Video_Anomaly_Detection)
-
----
-
-### 🎬 Final Project
-(Please fill in once your project topic is determined.)
-
-👉 Folder: [`Final_Project/`](./Final_Project)
-
----
+The assignments build on course starter material and the cited datasets and papers. HW3 follows [SimpleNet](https://openaccess.thecvf.com/content/CVPR2023/papers/Liu_SimpleNet_A_Simple_Network_for_Image_Anomaly_Detection_and_Localization_CVPR_2023_paper.pdf), and HW4 follows [Jigsaw-VAD](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/6451_ECCV_2022_paper.php). Third-party data and reference implementations remain under their respective terms.
