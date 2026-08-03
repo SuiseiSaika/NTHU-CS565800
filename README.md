@@ -1,64 +1,36 @@
-# Machine Learning for Anomaly Detection (2024 Spring)
+# Machine Learning for Anomaly Detection — Spring 2024
 
-This repository contains all homework and the final project for the "Machine Learning for Anomaly Detection" course taught by **Prof. Shang-Hong Lai** at NTHU.
+Selected coursework from NTHU CS5658, taught by Prof. Shang-Hong Lai. The repository focuses on two complementary settings: classical time-series anomaly detection and self-supervised video anomaly detection.
 
-## 📚 Course Overview
-This course introduces machine learning methods for detecting anomalies in images, time series, industrial data, and videos. 
+## Published work
 
----
+| Project | Problem | Methods | Best reported result |
+| --- | --- | --- | --- |
+| [HW2: Time-Series Anomaly Detection](Homework2_Time_Series_Anomaly_Detection/) | Detect abnormal Wafer and ECG200 sequences | k-NN, PCA reconstruction, DFT features, Haar DWT features | Wafer AUROC 0.9987; ECG200 AUROC 0.9661 |
+| [HW4: Video Anomaly Detection](Homework4_Video_Anomaly_Detection/) | Detect unusual events in CUHK Avenue video | Jigsaw-VAD and two temporal-classification variants | micro-AUROC 0.7944 |
 
-## 📦 Assignments
+Only HW2 and the HW4 experiment report are present in this public repository. Earlier references to HW1, HW3, and a final project did not correspond to tracked artifacts and have been removed from the navigation.
 
-### HW1 - MNIST Anomaly Detection
-Apply various anomaly detection methods on the MNIST dataset by:
-- Using one digit as the normal class, others as anomalies.
-- Applying PCA for dimensionality reduction (to 30).
-- Training only on normal data.
-- Evaluating with ROC-AUC over all digit classes.
+## Repository layout
 
-👉 Folder: [`Homework1_MNIST_Anomaly_Detection/`](./Homework1_MNIST_Anomaly_Detection)
+```text
+.
+├── Homework2_Time_Series_Anomaly_Detection/
+│   ├── images/          # Tracked experiment plots
+│   ├── main.py          # Portable experiment runner
+│   └── README.md        # Methods, results, and reproduction notes
+├── Homework4_Video_Anomaly_Detection/
+│   └── README.md        # Experiment design and reported results
+└── requirements.txt
+```
 
----
+## Reproduction scope
 
-### HW2 - Time Series Anomaly Detection
-Detect anomalies in:
-- **Wafer** and **ECG200** datasets.
-- Use normal samples (label=1) for training, 9:1 ratio for testing.
-- Feature extraction & anomaly algorithms applied.
-- ROC-AUC used for evaluation.
+The datasets, model checkpoints, and the modified HW4 training implementation are not included. HW2 can be rerun after obtaining Wafer and ECG200 separately; see its project README for the expected directory layout. HW4 is preserved as a results report and cannot be reproduced from this repository alone.
 
-👉 Folder: [`Homework2_Time_Series_Anomaly_Detection/`](./Homework2_Time_Series_Anomaly_Detection)
+## Attribution
 
----
+- The Wafer and ECG200 datasets are distributed through the UCR Time Series Classification Archive.
+- HW4 builds on Wang et al., “Video Anomaly Detection by Solving Decoupled Spatio-Temporal Jigsaw Puzzles,” ECCV 2022. See the [paper](https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/6451_ECCV_2022_paper.php) and [official implementation](https://github.com/gdwang08/Jigsaw-VAD).
 
-### HW3 - Industrial Anomaly Detection
-Use **MVTecAD** datasets:
-- Classes: `metal_nut` and `leather`
-- Model: Self-implemented `SimpleNet` (CVPR 2023)
-- Tasks: Anomaly detection + segmentation
-
-References:
-- [SimpleNet Paper (CVPR 2023)](https://openaccess.thecvf.com/content/CVPR2023/papers/Liu_SimpleNet_A_Simple_Network_for_Image_Anomaly_Detection_and_Localization_CVPR_2023_paper.pdf)
-- [GitHub Repo](https://github.com/DonaldRR/SimpleNet)
-
-👉 Folder: [`Homework3_Industrial_Anomaly_Detection/`](./Homework3_Industrial_Anomaly_Detection)
-
----
-
-### HW4 - Video Anomaly Detection
-Dataset: **CUHK Avenue**
-- Training videos: Normal only
-- Testing videos: Normal + Abnormal events
-- Spatio-temporal cubes (5 frames)
-- Epoch = 20, Filter ratio = 0.9
-
-👉 Folder: [`Homework4_Video_Anomaly_Detection/`](./Homework4_Video_Anomaly_Detection)
-
----
-
-### 🎬 Final Project
-(Please fill in once your project topic is determined.)
-
-👉 Folder: [`Final_Project/`](./Final_Project)
-
----
+Coursework is retained for portfolio and educational review. No repository-level software license is asserted; third-party datasets and reference implementations remain subject to their own terms.
