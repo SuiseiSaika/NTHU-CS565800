@@ -28,7 +28,6 @@ Coursework from NTHU CS5658, taught by Prof. Shang-Hong Lai. The four assignment
 |   `-- README.md
 |-- Homework4_Video_Anomaly_Detection/
 |   `-- README.md
-|-- hw2.py
 `-- requirements.txt
 ```
 
